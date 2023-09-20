@@ -1,0 +1,7 @@
+# Project exclude paths
+/HtxkEmsm-admin/target/
+/HtxkEmsm-common/target/
+/HtxkEmsm-framework/target/
+/HtxkEmsm-generator/target/
+/HtxkEmsm-quartz/target/
+/HtxkEmsm-system/target/
