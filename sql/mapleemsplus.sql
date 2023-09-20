@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost
+ Source Server         : mbt
  Source Server Type    : MySQL
- Source Server Version : 80027
+ Source Server Version : 80026
  Source Host           : localhost:3306
  Source Schema         : mapleemsplus
 
  Target Server Type    : MySQL
- Target Server Version : 80027
+ Target Server Version : 80026
  File Encoding         : 65001
 
- Date: 17/09/2022 11:25:21
+ Date: 20/09/2023 11:33:26
 */
 
 SET NAMES utf8mb4;
@@ -22,17 +22,17 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `edu_class`;
 CREATE TABLE `edu_class`  (
-  `class_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '班级ID',
+  `class_id` bigint NOT NULL AUTO_INCREMENT COMMENT '班级ID',
   `class_name` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '班级名',
   `class_Date` date NOT NULL COMMENT '开班时间',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建者',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
-  `class_Major` bigint(0) NOT NULL COMMENT '班级专业id',
+  `class_Major` bigint NOT NULL COMMENT '班级专业id',
   PRIMARY KEY (`class_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '班级信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '班级信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of edu_class
@@ -46,17 +46,17 @@ INSERT INTO `edu_class` VALUES (4, 'H190509', '2019-05-09', 'admin', '2020-01-09
 -- ----------------------------
 DROP TABLE IF EXISTS `edu_class_course`;
 CREATE TABLE `edu_class_course`  (
-  `class_course_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '班级课程ID',
-  `class_course_class_id` bigint(0) NOT NULL COMMENT '班级ID',
-  `class_course_teacherid` bigint(0) NOT NULL COMMENT '任课教师id',
-  `class_course_course_id` bigint(0) NOT NULL COMMENT '课程ID',
+  `class_course_id` bigint NOT NULL AUTO_INCREMENT COMMENT '班级课程ID',
+  `class_course_class_id` bigint NOT NULL COMMENT '班级ID',
+  `class_course_teacherid` bigint NOT NULL COMMENT '任课教师id',
+  `class_course_course_id` bigint NOT NULL COMMENT '课程ID',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建者（只能由系统用户设置）',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '修改者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
   `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
   PRIMARY KEY (`class_course_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '班级课程表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '班级课程表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of edu_class_course
@@ -68,16 +68,16 @@ INSERT INTO `edu_class_course` VALUES (1, 1, 6, 1, NULL, '2020-01-10 15:50:48', 
 -- ----------------------------
 DROP TABLE IF EXISTS `edu_class_teacher`;
 CREATE TABLE `edu_class_teacher`  (
-  `class_teacher_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '班级教师ID',
-  `class_teacher_class_id` bigint(0) NOT NULL COMMENT '班级ID',
-  `class_teacher_teacher_id` bigint(0) NOT NULL COMMENT '教师ID',
+  `class_teacher_id` bigint NOT NULL AUTO_INCREMENT COMMENT '班级教师ID',
+  `class_teacher_class_id` bigint NOT NULL COMMENT '班级ID',
+  `class_teacher_teacher_id` bigint NOT NULL COMMENT '教师ID',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建者（只能由系统用户设置）',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
   PRIMARY KEY (`class_teacher_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '班级教师表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '班级教师表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of edu_class_teacher
@@ -93,16 +93,16 @@ INSERT INTO `edu_class_teacher` VALUES (5, 4, 15, 'admin', '2022-09-16 14:24:12'
 -- ----------------------------
 DROP TABLE IF EXISTS `edu_classroom`;
 CREATE TABLE `edu_classroom`  (
-  `Classroom_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '教室ID',
+  `Classroom_id` bigint NOT NULL AUTO_INCREMENT COMMENT '教室ID',
   `Classroom_address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '教室地址',
-  `Classroom_capacity` int(0) NOT NULL DEFAULT 0 COMMENT '教室容量 单位人',
+  `Classroom_capacity` int NOT NULL DEFAULT 0 COMMENT '教室容量 单位人',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建者',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
   PRIMARY KEY (`Classroom_id`, `Classroom_capacity`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '教室表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '教室表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of edu_classroom
@@ -115,16 +115,16 @@ INSERT INTO `edu_classroom` VALUES (2, '湖南大学数学院109', 0, 'admin', '
 -- ----------------------------
 DROP TABLE IF EXISTS `edu_course`;
 CREATE TABLE `edu_course`  (
-  `course_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '课程ID',
+  `course_id` bigint NOT NULL AUTO_INCREMENT COMMENT '课程ID',
   `course_name` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '课程名',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建者（只能由系统用户设置）',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
-  `course_typeid` bigint(0) NOT NULL COMMENT '课程类型ID',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
+  `course_typeid` bigint NOT NULL COMMENT '课程类型ID',
   `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
   PRIMARY KEY (`course_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '课程表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '课程表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of edu_course
@@ -139,15 +139,15 @@ INSERT INTO `edu_course` VALUES (4, 'C#高级', 'admin', '2021-03-20 15:07:28', 
 -- ----------------------------
 DROP TABLE IF EXISTS `edu_course_type`;
 CREATE TABLE `edu_course_type`  (
-  `course_type_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '课程类型ID',
+  `course_type_id` bigint NOT NULL AUTO_INCREMENT COMMENT '课程类型ID',
   `course_type_name` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '课程类型名',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建者（只能由系统用户设置）',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '修改者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '修改时间',
   `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
   PRIMARY KEY (`course_type_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '课程类型表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '课程类型表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of edu_course_type
@@ -160,16 +160,16 @@ INSERT INTO `edu_course_type` VALUES (2, 'H2', 'maple', '2020-01-08 16:08:36', '
 -- ----------------------------
 DROP TABLE IF EXISTS `edu_major`;
 CREATE TABLE `edu_major`  (
-  `Major_studiedId` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '专业id',
+  `Major_studiedId` bigint NOT NULL AUTO_INCREMENT COMMENT '专业id',
   `Major_studiedName` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '专业名',
   `Major_describe` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '专业描述',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建者',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
   PRIMARY KEY (`Major_studiedId`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '专业表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '专业表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of edu_major
@@ -184,23 +184,23 @@ INSERT INTO `edu_major` VALUES (5, 'java', 'Java是一门面向对象编程语�
 -- ----------------------------
 DROP TABLE IF EXISTS `edu_paper`;
 CREATE TABLE `edu_paper`  (
-  `id` bigint(0) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '试卷号',
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '试卷号',
   `qty_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '试卷名称',
-  `qty_time` int(0) NULL DEFAULT NULL COMMENT '考试时间',
+  `qty_time` int NULL DEFAULT NULL COMMENT '考试时间',
   `qty_sing` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '单选题',
   `qty_muti` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '多选题',
   `qty_jud` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '判断题',
   `qty_fill` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '填空题',
   `qty_ess` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '简答题',
-  `course_id` bigint(0) NULL DEFAULT NULL COMMENT '课程id',
+  `course_id` bigint NULL DEFAULT NULL COMMENT '课程id',
   `score` double(30, 1) NULL DEFAULT NULL COMMENT '总分',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建者',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '试卷表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '试卷表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of edu_paper
@@ -215,19 +215,19 @@ INSERT INTO `edu_paper` VALUES (4, '测试4', 90, '1,2,3,4,7,25,27,28,30,31', '5
 -- ----------------------------
 DROP TABLE IF EXISTS `edu_question`;
 CREATE TABLE `edu_question`  (
-  `id` bigint(0) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '题目序号',
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '题目序号',
   `type` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '题目类型',
   `title` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '题目标题',
   `sel` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '题目选项',
   `score` double(30, 1) NOT NULL COMMENT '题目分值',
   `answer` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '题目答案/关键词',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '创建者',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL COMMENT '更新者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 81 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '题库表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 80 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci COMMENT = '题库表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of edu_question
@@ -280,18 +280,18 @@ INSERT INTO `edu_question` VALUES (80, '4', '23+11=？', NULL, 5.0, '34', 'admin
 -- ----------------------------
 DROP TABLE IF EXISTS `edu_score`;
 CREATE TABLE `edu_score`  (
-  `score_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '课程分数ID',
-  `score_studentid` bigint(0) NOT NULL COMMENT '学生id',
-  `class_course_course_id` bigint(0) NOT NULL COMMENT '班级课程ID',
+  `score_id` bigint NOT NULL AUTO_INCREMENT COMMENT '课程分数ID',
+  `score_studentid` bigint NOT NULL COMMENT '学生id',
+  `class_course_course_id` bigint NOT NULL COMMENT '班级课程ID',
   `score` double(30, 1) NOT NULL COMMENT '分数',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建者',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
   `describe` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '考试描述（比如期末测评 等等）',
   PRIMARY KEY (`score_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '课程学分表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '课程学分表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of edu_score
@@ -303,61 +303,63 @@ INSERT INTO `edu_score` VALUES (1, 3, 1, 100.0, 'admin', '2020-01-10 13:21:49', 
 -- ----------------------------
 DROP TABLE IF EXISTS `edu_student`;
 CREATE TABLE `edu_student`  (
-  `student_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '学生信息ID',
+  `student_id` bigint NOT NULL AUTO_INCREMENT COMMENT '学生信息ID',
   `student_no` varchar(12) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '学号（格式：年号+开班时间+4位报名序号）',
   `student_name` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '学生名（学生真实姓名）',
-  `sys_user_id` bigint(0) NOT NULL COMMENT '用户id',
-  `student_class` bigint(0) NOT NULL COMMENT '所属班级ID',
+  `sys_user_id` bigint NOT NULL COMMENT '用户id',
+  `student_class` bigint NOT NULL COMMENT '所属班级ID',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '状态（0.在籍1:毕业 2:休学 3:退学）',
-  `student_Majorstudiedid` bigint(0) NOT NULL COMMENT '所学专业id',
+  `student_Majorstudiedid` bigint NOT NULL COMMENT '所学专业id',
   PRIMARY KEY (`student_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '学生信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '学生信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of edu_student
 -- ----------------------------
-INSERT INTO `edu_student` VALUES (15, '202209132543', '杨媛', 10004, 1, '0', 1);
-INSERT INTO `edu_student` VALUES (18, '202209162150', '吴雨桐', 10009, 4, '0', 2);
 INSERT INTO `edu_student` VALUES (19, '202209162235', '张三', 10010, 1, '3', 1);
 INSERT INTO `edu_student` VALUES (20, '202209162354', '笑笑', 10011, 4, '1', 2);
+INSERT INTO `edu_student` VALUES (22, '202309183621', '陶柏蒙', 10017, 1, '0', 1);
+INSERT INTO `edu_student` VALUES (23, '202309180822', '吴鸡锋', 10019, 1, '0', 1);
+INSERT INTO `edu_student` VALUES (24, '202309194007', '陈鸿蓓', 10020, 1, '0', 1);
 
 -- ----------------------------
 -- Table structure for edu_teacher
 -- ----------------------------
 DROP TABLE IF EXISTS `edu_teacher`;
 CREATE TABLE `edu_teacher`  (
-  `teacher_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '教师信息ID',
+  `teacher_id` bigint NOT NULL AUTO_INCREMENT COMMENT '教师信息ID',
   `teacher_name` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户名（老师真实姓名）',
-  `sys_user_id` bigint(0) NOT NULL COMMENT '用户id',
+  `sys_user_id` bigint NOT NULL COMMENT '用户id',
   `Education` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '学历（0.高中1.大专.2.本科3.研究生）',
   `academic_title` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '职称（0.一级教师，1.二级教师，2.三级教师）',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '状态（0.在职 1.离职）',
   PRIMARY KEY (`teacher_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '教师信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '教师信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of edu_teacher
 -- ----------------------------
-INSERT INTO `edu_teacher` VALUES (14, '吴娟', 10005, '3', '0', '0');
 INSERT INTO `edu_teacher` VALUES (15, '李四', 10008, '2', '0', '0');
 INSERT INTO `edu_teacher` VALUES (16, '张飞', 10012, '1', '2', '0');
 INSERT INTO `edu_teacher` VALUES (17, '曹操', 10013, '3', '0', '1');
+INSERT INTO `edu_teacher` VALUES (19, '蔡徐坤', 10018, '3', '0', '0');
+INSERT INTO `edu_teacher` VALUES (20, '朱永丽', 10021, '2', '2', '0');
 
 -- ----------------------------
 -- Table structure for edu_teaching_material
 -- ----------------------------
 DROP TABLE IF EXISTS `edu_teaching_material`;
 CREATE TABLE `edu_teaching_material`  (
-  `id` bigint(0) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `file_name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '文件名称',
   `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '文件路径',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建者',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '文件表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '文件表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of edu_teaching_material
@@ -369,25 +371,25 @@ INSERT INTO `edu_teaching_material` VALUES (2, '1615901919337student.xlsx', '/pr
 -- ----------------------------
 DROP TABLE IF EXISTS `edu_test_records`;
 CREATE TABLE `edu_test_records`  (
-  `id` bigint(0) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `paper_id` bigint(0) NULL DEFAULT NULL COMMENT '试卷id',
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `paper_id` bigint NULL DEFAULT NULL COMMENT '试卷id',
   `sing_answer_sheet` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '单选题答题卡',
   `muti_answer_sheet` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '多选题答题卡',
   `jud_answer_sheet` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '判断题答题卡数组',
   `fill_answer_sheet` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '填空题答题卡数组',
   `ess_answer_sheet` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '简答题答题卡数组',
-  `course_id` bigint(0) NULL DEFAULT NULL COMMENT '课程id',
+  `course_id` bigint NULL DEFAULT NULL COMMENT '课程id',
   `describe` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '描述',
   `score` double(30, 1) NULL DEFAULT NULL COMMENT '得分',
   `total_points` double(30, 1) NULL DEFAULT NULL COMMENT '总分',
-  `class_id` bigint(0) NULL DEFAULT NULL COMMENT '所属班级',
+  `class_id` bigint NULL DEFAULT NULL COMMENT '所属班级',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '答题人/创建者/登录名称',
-  `create_time` datetime(0) NULL DEFAULT NULL,
+  `create_time` datetime NULL DEFAULT NULL,
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '删除标志（0代表存在 2代表删除）',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '考试记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '考试记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of edu_test_records
@@ -399,29 +401,37 @@ INSERT INTO `edu_test_records` VALUES (4, 1, '{\"1\":\"3\",\"2\":\"2\",\"3\":\"2
 -- ----------------------------
 DROP TABLE IF EXISTS `edu_timetable`;
 CREATE TABLE `edu_timetable`  (
-  `Timetable_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '课表id',
-  `Timetable_starttime` datetime(0) NOT NULL COMMENT '时间区段：开始时间',
-  `Timetable_Endtime` datetime(0) NOT NULL COMMENT '时间区段：结束时间',
-  `Timetable_details_id` bigint(0) NOT NULL COMMENT '课表详情id',
+  `Timetable_id` bigint NOT NULL AUTO_INCREMENT COMMENT '课表id',
+  `Timetable_starttime` datetime NOT NULL COMMENT '时间区段：开始时间',
+  `Timetable_Endtime` datetime NOT NULL COMMENT '时间区段：结束时间',
+  `Timetable_details_id` bigint NOT NULL COMMENT '课表详情id',
   `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
   PRIMARY KEY (`Timetable_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '课表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '课表' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of edu_timetable
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for edu_timetable_details
 -- ----------------------------
 DROP TABLE IF EXISTS `edu_timetable_details`;
 CREATE TABLE `edu_timetable_details`  (
-  `details_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '课表详情id',
+  `details_id` bigint NOT NULL AUTO_INCREMENT COMMENT '课表详情id',
   PRIMARY KEY (`details_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '课表详细表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '课表详细表' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of edu_timetable_details
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for gen_table
 -- ----------------------------
 DROP TABLE IF EXISTS `gen_table`;
 CREATE TABLE `gen_table`  (
-  `table_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `table_id` bigint NOT NULL AUTO_INCREMENT COMMENT '编号',
   `table_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '表名称',
   `table_comment` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '表描述',
   `class_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '实体类名称',
@@ -433,12 +443,12 @@ CREATE TABLE `gen_table`  (
   `function_author` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '生成功能作者',
   `options` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '其它生成选项',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`table_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 39 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '代码生成业务表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 38 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '代码生成业务表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of gen_table
@@ -453,7 +463,7 @@ INSERT INTO `gen_table` VALUES (38, 'edu_teaching_material', '教学资料表', 
 -- ----------------------------
 DROP TABLE IF EXISTS `gen_table_column`;
 CREATE TABLE `gen_table_column`  (
-  `column_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `column_id` bigint NOT NULL AUTO_INCREMENT COMMENT '编号',
   `table_id` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '归属表编号',
   `column_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '列名称',
   `column_comment` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '列描述',
@@ -470,13 +480,13 @@ CREATE TABLE `gen_table_column`  (
   `query_type` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'EQ' COMMENT '查询方式（等于、不等于、大于、小于、范围）',
   `html_type` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '显示类型（文本框、文本域、下拉框、复选框、单选框、日期控件）',
   `dict_type` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '字典类型',
-  `sort` int(0) NULL DEFAULT NULL COMMENT '排序',
+  `sort` int NULL DEFAULT NULL COMMENT '排序',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`column_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 277 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '代码生成业务表字段' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 276 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '代码生成业务表字段' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of gen_table_column
@@ -543,7 +553,11 @@ CREATE TABLE `qrtz_blob_triggers`  (
   `blob_data` blob NULL,
   PRIMARY KEY (`sched_name`, `trigger_name`, `trigger_group`) USING BTREE,
   CONSTRAINT `qrtz_blob_triggers_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `qrtz_triggers` (`sched_name`, `trigger_name`, `trigger_group`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of qrtz_blob_triggers
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for qrtz_calendars
@@ -554,7 +568,11 @@ CREATE TABLE `qrtz_calendars`  (
   `calendar_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `calendar` blob NOT NULL,
   PRIMARY KEY (`sched_name`, `calendar_name`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of qrtz_calendars
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for qrtz_cron_triggers
@@ -568,7 +586,7 @@ CREATE TABLE `qrtz_cron_triggers`  (
   `time_zone_id` varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`sched_name`, `trigger_name`, `trigger_group`) USING BTREE,
   CONSTRAINT `qrtz_cron_triggers_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `qrtz_triggers` (`sched_name`, `trigger_name`, `trigger_group`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_cron_triggers
@@ -587,16 +605,20 @@ CREATE TABLE `qrtz_fired_triggers`  (
   `trigger_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `trigger_group` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `instance_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `fired_time` bigint(0) NOT NULL,
-  `sched_time` bigint(0) NOT NULL,
-  `priority` int(0) NOT NULL,
+  `fired_time` bigint NOT NULL,
+  `sched_time` bigint NOT NULL,
+  `priority` int NOT NULL,
   `state` varchar(16) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `job_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `job_group` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `is_nonconcurrent` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `requests_recovery` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`sched_name`, `entry_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of qrtz_fired_triggers
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for qrtz_job_details
@@ -614,7 +636,7 @@ CREATE TABLE `qrtz_job_details`  (
   `requests_recovery` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `job_data` blob NULL,
   PRIMARY KEY (`sched_name`, `job_name`, `job_group`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_job_details
@@ -631,7 +653,7 @@ CREATE TABLE `qrtz_locks`  (
   `sched_name` varchar(120) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `lock_name` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`sched_name`, `lock_name`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_locks
@@ -647,7 +669,11 @@ CREATE TABLE `qrtz_paused_trigger_grps`  (
   `sched_name` varchar(120) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `trigger_group` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`sched_name`, `trigger_group`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of qrtz_paused_trigger_grps
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for qrtz_scheduler_state
@@ -656,15 +682,15 @@ DROP TABLE IF EXISTS `qrtz_scheduler_state`;
 CREATE TABLE `qrtz_scheduler_state`  (
   `sched_name` varchar(120) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `instance_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `last_checkin_time` bigint(0) NOT NULL,
-  `checkin_interval` bigint(0) NOT NULL,
+  `last_checkin_time` bigint NOT NULL,
+  `checkin_interval` bigint NOT NULL,
   PRIMARY KEY (`sched_name`, `instance_name`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_scheduler_state
 -- ----------------------------
-INSERT INTO `qrtz_scheduler_state` VALUES ('RuoyiScheduler', 'LAPTOP-85OOIECH1663384998360', 1663385046205, 15000);
+INSERT INTO `qrtz_scheduler_state` VALUES ('RuoyiScheduler', 'DESKTOP-79BH2M31695180752874', 1695180800690, 15000);
 
 -- ----------------------------
 -- Table structure for qrtz_simple_triggers
@@ -674,12 +700,16 @@ CREATE TABLE `qrtz_simple_triggers`  (
   `sched_name` varchar(120) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `trigger_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `trigger_group` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `repeat_count` bigint(0) NOT NULL,
-  `repeat_interval` bigint(0) NOT NULL,
-  `times_triggered` bigint(0) NOT NULL,
+  `repeat_count` bigint NOT NULL,
+  `repeat_interval` bigint NOT NULL,
+  `times_triggered` bigint NOT NULL,
   PRIMARY KEY (`sched_name`, `trigger_name`, `trigger_group`) USING BTREE,
   CONSTRAINT `qrtz_simple_triggers_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `qrtz_triggers` (`sched_name`, `trigger_name`, `trigger_group`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of qrtz_simple_triggers
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for qrtz_simprop_triggers
@@ -692,17 +722,21 @@ CREATE TABLE `qrtz_simprop_triggers`  (
   `str_prop_1` varchar(512) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `str_prop_2` varchar(512) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `str_prop_3` varchar(512) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `int_prop_1` int(0) NULL DEFAULT NULL,
-  `int_prop_2` int(0) NULL DEFAULT NULL,
-  `long_prop_1` bigint(0) NULL DEFAULT NULL,
-  `long_prop_2` bigint(0) NULL DEFAULT NULL,
+  `int_prop_1` int NULL DEFAULT NULL,
+  `int_prop_2` int NULL DEFAULT NULL,
+  `long_prop_1` bigint NULL DEFAULT NULL,
+  `long_prop_2` bigint NULL DEFAULT NULL,
   `dec_prop_1` decimal(13, 4) NULL DEFAULT NULL,
   `dec_prop_2` decimal(13, 4) NULL DEFAULT NULL,
   `bool_prop_1` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `bool_prop_2` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`sched_name`, `trigger_name`, `trigger_group`) USING BTREE,
   CONSTRAINT `qrtz_simprop_triggers_ibfk_1` FOREIGN KEY (`sched_name`, `trigger_name`, `trigger_group`) REFERENCES `qrtz_triggers` (`sched_name`, `trigger_name`, `trigger_group`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of qrtz_simprop_triggers
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for qrtz_triggers
@@ -715,45 +749,45 @@ CREATE TABLE `qrtz_triggers`  (
   `job_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `job_group` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `description` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `next_fire_time` bigint(0) NULL DEFAULT NULL,
-  `prev_fire_time` bigint(0) NULL DEFAULT NULL,
-  `priority` int(0) NULL DEFAULT NULL,
+  `next_fire_time` bigint NULL DEFAULT NULL,
+  `prev_fire_time` bigint NULL DEFAULT NULL,
+  `priority` int NULL DEFAULT NULL,
   `trigger_state` varchar(16) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `trigger_type` varchar(8) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `start_time` bigint(0) NOT NULL,
-  `end_time` bigint(0) NULL DEFAULT NULL,
+  `start_time` bigint NOT NULL,
+  `end_time` bigint NULL DEFAULT NULL,
   `calendar_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `misfire_instr` smallint(0) NULL DEFAULT NULL,
+  `misfire_instr` smallint NULL DEFAULT NULL,
   `job_data` blob NULL,
   PRIMARY KEY (`sched_name`, `trigger_name`, `trigger_group`) USING BTREE,
   INDEX `sched_name`(`sched_name`, `job_name`, `job_group`) USING BTREE,
   CONSTRAINT `qrtz_triggers_ibfk_1` FOREIGN KEY (`sched_name`, `job_name`, `job_group`) REFERENCES `qrtz_job_details` (`sched_name`, `job_name`, `job_group`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of qrtz_triggers
 -- ----------------------------
-INSERT INTO `qrtz_triggers` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME1', 'DEFAULT', 'TASK_CLASS_NAME1', 'DEFAULT', NULL, 1663385000000, -1, 5, 'PAUSED', 'CRON', 1663384998000, 0, NULL, 2, '');
-INSERT INTO `qrtz_triggers` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME2', 'DEFAULT', 'TASK_CLASS_NAME2', 'DEFAULT', NULL, 1663385010000, -1, 5, 'PAUSED', 'CRON', 1663384998000, 0, NULL, 2, '');
-INSERT INTO `qrtz_triggers` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME3', 'DEFAULT', 'TASK_CLASS_NAME3', 'DEFAULT', NULL, 1663385000000, -1, 5, 'PAUSED', 'CRON', 1663384998000, 0, NULL, 2, '');
+INSERT INTO `qrtz_triggers` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME1', 'DEFAULT', 'TASK_CLASS_NAME1', 'DEFAULT', NULL, 1695180760000, -1, 5, 'PAUSED', 'CRON', 1695180753000, 0, NULL, 2, '');
+INSERT INTO `qrtz_triggers` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME2', 'DEFAULT', 'TASK_CLASS_NAME2', 'DEFAULT', NULL, 1695180765000, -1, 5, 'PAUSED', 'CRON', 1695180753000, 0, NULL, 2, '');
+INSERT INTO `qrtz_triggers` VALUES ('RuoyiScheduler', 'TASK_CLASS_NAME3', 'DEFAULT', 'TASK_CLASS_NAME3', 'DEFAULT', NULL, 1695180760000, -1, 5, 'PAUSED', 'CRON', 1695180753000, 0, NULL, 2, '');
 
 -- ----------------------------
 -- Table structure for sys_config
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_config`;
 CREATE TABLE `sys_config`  (
-  `config_id` int(0) NOT NULL AUTO_INCREMENT COMMENT '参数主键',
+  `config_id` int NOT NULL AUTO_INCREMENT COMMENT '参数主键',
   `config_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '参数名称',
   `config_key` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '参数键名',
   `config_value` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '参数键值',
   `config_type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'N' COMMENT '系统内置（Y是 N否）',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`config_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '参数配置表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '参数配置表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_config
@@ -767,22 +801,22 @@ INSERT INTO `sys_config` VALUES (3, '主框架页-侧边栏主题', 'sys.index.s
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_dept`;
 CREATE TABLE `sys_dept`  (
-  `dept_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '部门id',
-  `parent_id` bigint(0) NULL DEFAULT 0 COMMENT '父部门id',
+  `dept_id` bigint NOT NULL AUTO_INCREMENT COMMENT '部门id',
+  `parent_id` bigint NULL DEFAULT 0 COMMENT '父部门id',
   `ancestors` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '祖级列表',
   `dept_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '部门名称',
-  `order_num` int(0) NULL DEFAULT 0 COMMENT '显示顺序',
+  `order_num` int NULL DEFAULT 0 COMMENT '显示顺序',
   `leader` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '负责人',
   `phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '联系电话',
   `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '邮箱',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '部门状态（0正常 1停用）',
   `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`dept_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 113 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '部门表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 114 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '部门表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_dept
@@ -805,8 +839,8 @@ INSERT INTO `sys_dept` VALUES (113, 100, '0,100', '温州商学院', 1, '吴娟'
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_dict_data`;
 CREATE TABLE `sys_dict_data`  (
-  `dict_code` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '字典编码',
-  `dict_sort` int(0) NULL DEFAULT 0 COMMENT '字典排序',
+  `dict_code` bigint NOT NULL AUTO_INCREMENT COMMENT '字典编码',
+  `dict_sort` int NULL DEFAULT 0 COMMENT '字典排序',
   `dict_label` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '字典标签',
   `dict_value` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '字典键值',
   `dict_type` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '字典类型',
@@ -815,12 +849,12 @@ CREATE TABLE `sys_dict_data`  (
   `is_default` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'N' COMMENT '是否默认（Y是 N否）',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '状态（0正常 1停用）',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`dict_code`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 47 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典数据表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 47 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典数据表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_dict_data
@@ -877,18 +911,18 @@ INSERT INTO `sys_dict_data` VALUES (46, 5, '简答题', '4', 'QuestionTypes', NU
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_dict_type`;
 CREATE TABLE `sys_dict_type`  (
-  `dict_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '字典主键',
+  `dict_id` bigint NOT NULL AUTO_INCREMENT COMMENT '字典主键',
   `dict_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '字典名称',
   `dict_type` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '字典类型',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '状态（0正常 1停用）',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`dict_id`) USING BTREE,
   UNIQUE INDEX `dict_type`(`dict_type`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典类型表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典类型表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_dict_type
@@ -914,7 +948,7 @@ INSERT INTO `sys_dict_type` VALUES (15, '题目类型', 'QuestionTypes', '0', 'a
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_job`;
 CREATE TABLE `sys_job`  (
-  `job_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '任务ID',
+  `job_id` bigint NOT NULL AUTO_INCREMENT COMMENT '任务ID',
   `job_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '任务名称',
   `job_group` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'DEFAULT' COMMENT '任务组名',
   `invoke_target` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '调用目标字符串',
@@ -923,12 +957,12 @@ CREATE TABLE `sys_job`  (
   `concurrent` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '1' COMMENT '是否并发执行（0允许 1禁止）',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '状态（0正常 1暂停）',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '备注信息',
   PRIMARY KEY (`job_id`, `job_name`, `job_group`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '定时任务调度表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '定时任务调度表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_job
@@ -942,23 +976,27 @@ INSERT INTO `sys_job` VALUES (3, '系统默认（多参）', 'DEFAULT', 'ryTask.
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_job_log`;
 CREATE TABLE `sys_job_log`  (
-  `job_log_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '任务日志ID',
+  `job_log_id` bigint NOT NULL AUTO_INCREMENT COMMENT '任务日志ID',
   `job_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '任务名称',
   `job_group` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '任务组名',
   `invoke_target` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '调用目标字符串',
   `job_message` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '日志信息',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '执行状态（0正常 1失败）',
   `exception_info` varchar(2000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '异常信息',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`job_log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '定时任务调度日志表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '定时任务调度日志表' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of sys_job_log
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for sys_logininfor
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_logininfor`;
 CREATE TABLE `sys_logininfor`  (
-  `info_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '访问ID',
+  `info_id` bigint NOT NULL AUTO_INCREMENT COMMENT '访问ID',
   `login_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '登录账号',
   `ipaddr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '登录IP地址',
   `login_location` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '登录地点',
@@ -966,9 +1004,9 @@ CREATE TABLE `sys_logininfor`  (
   `os` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '操作系统',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '登录状态（0成功 1失败）',
   `msg` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '提示消息',
-  `login_time` datetime(0) NULL DEFAULT NULL COMMENT '访问时间',
+  `login_time` datetime NULL DEFAULT NULL COMMENT '访问时间',
   PRIMARY KEY (`info_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 535 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统访问记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 603 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统访问记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_logininfor
@@ -1408,16 +1446,84 @@ INSERT INTO `sys_logininfor` VALUES (531, 'admin', '127.0.0.1', '内网IP', 'Chr
 INSERT INTO `sys_logininfor` VALUES (532, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-09-17 11:12:37');
 INSERT INTO `sys_logininfor` VALUES (533, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '退出成功', '2022-09-17 11:15:44');
 INSERT INTO `sys_logininfor` VALUES (534, 'admin', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', '0', '登录成功', '2022-09-17 11:23:45');
+INSERT INTO `sys_logininfor` VALUES (535, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '密码输入错误1次', '2023-09-18 10:31:37');
+INSERT INTO `sys_logininfor` VALUES (536, 'mbt', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '密码输入错误1次', '2023-09-18 10:35:17');
+INSERT INTO `sys_logininfor` VALUES (537, 'mbt', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '密码输入错误2次', '2023-09-18 10:40:32');
+INSERT INTO `sys_logininfor` VALUES (538, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '密码输入错误1次', '2023-09-18 10:42:47');
+INSERT INTO `sys_logininfor` VALUES (539, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '密码输入错误2次', '2023-09-18 10:45:31');
+INSERT INTO `sys_logininfor` VALUES (540, '2147483648', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '用户不存在/密码错误', '2023-09-18 10:54:46');
+INSERT INTO `sys_logininfor` VALUES (541, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '密码输入错误1次', '2023-09-18 10:56:10');
+INSERT INTO `sys_logininfor` VALUES (542, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '密码输入错误2次', '2023-09-18 10:56:15');
+INSERT INTO `sys_logininfor` VALUES (543, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '密码输入错误3次', '2023-09-18 11:01:47');
+INSERT INTO `sys_logininfor` VALUES (544, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 11:03:30');
+INSERT INTO `sys_logininfor` VALUES (545, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 13:48:40');
+INSERT INTO `sys_logininfor` VALUES (546, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 13:55:17');
+INSERT INTO `sys_logininfor` VALUES (547, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-09-18 14:34:36');
+INSERT INTO `sys_logininfor` VALUES (548, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 14:35:08');
+INSERT INTO `sys_logininfor` VALUES (549, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-09-18 14:36:28');
+INSERT INTO `sys_logininfor` VALUES (550, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 14:36:55');
+INSERT INTO `sys_logininfor` VALUES (551, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-09-18 14:40:32');
+INSERT INTO `sys_logininfor` VALUES (552, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 14:40:48');
+INSERT INTO `sys_logininfor` VALUES (553, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-09-18 14:44:14');
+INSERT INTO `sys_logininfor` VALUES (554, 'kunkun', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 14:44:23');
+INSERT INTO `sys_logininfor` VALUES (555, 'kunkun', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-09-18 14:44:46');
+INSERT INTO `sys_logininfor` VALUES (556, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 14:45:36');
+INSERT INTO `sys_logininfor` VALUES (557, '法外狂徒', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '用户不存在/密码错误', '2023-09-18 14:48:05');
+INSERT INTO `sys_logininfor` VALUES (558, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 14:49:46');
+INSERT INTO `sys_logininfor` VALUES (559, '202209162150', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '密码输入错误1次', '2023-09-18 14:51:37');
+INSERT INTO `sys_logininfor` VALUES (560, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 16:19:39');
+INSERT INTO `sys_logininfor` VALUES (561, 'kunkun', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 16:20:28');
+INSERT INTO `sys_logininfor` VALUES (562, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 16:21:07');
+INSERT INTO `sys_logininfor` VALUES (563, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '密码输入错误1次', '2023-09-18 17:29:33');
+INSERT INTO `sys_logininfor` VALUES (564, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '密码输入错误2次', '2023-09-18 17:30:01');
+INSERT INTO `sys_logininfor` VALUES (565, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '密码输入错误3次', '2023-09-18 17:30:24');
+INSERT INTO `sys_logininfor` VALUES (566, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '密码输入错误4次', '2023-09-18 17:30:29');
+INSERT INTO `sys_logininfor` VALUES (567, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 17:30:48');
+INSERT INTO `sys_logininfor` VALUES (568, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 18:14:00');
+INSERT INTO `sys_logininfor` VALUES (569, 'mbt', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '用户不存在/密码错误', '2023-09-18 18:27:19');
+INSERT INTO `sys_logininfor` VALUES (570, 'kunkun', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 18:27:29');
+INSERT INTO `sys_logininfor` VALUES (571, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 18:29:24');
+INSERT INTO `sys_logininfor` VALUES (572, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 18:46:20');
+INSERT INTO `sys_logininfor` VALUES (573, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-09-18 18:53:13');
+INSERT INTO `sys_logininfor` VALUES (574, '202309183621', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '密码输入错误1次', '2023-09-18 18:53:19');
+INSERT INTO `sys_logininfor` VALUES (575, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 18:53:39');
+INSERT INTO `sys_logininfor` VALUES (576, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-09-18 18:53:58');
+INSERT INTO `sys_logininfor` VALUES (577, '202309183621', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '密码输入错误2次', '2023-09-18 18:54:08');
+INSERT INTO `sys_logininfor` VALUES (578, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 18:54:18');
+INSERT INTO `sys_logininfor` VALUES (579, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-09-18 18:54:31');
+INSERT INTO `sys_logininfor` VALUES (580, '陶柏蒙', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '用户不存在/密码错误', '2023-09-18 18:54:39');
+INSERT INTO `sys_logininfor` VALUES (581, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 18:54:50');
+INSERT INTO `sys_logininfor` VALUES (582, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-09-18 18:55:13');
+INSERT INTO `sys_logininfor` VALUES (583, 'mengbt', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '用户不存在/密码错误', '2023-09-18 18:55:21');
+INSERT INTO `sys_logininfor` VALUES (584, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 18:56:06');
+INSERT INTO `sys_logininfor` VALUES (585, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-09-18 18:56:54');
+INSERT INTO `sys_logininfor` VALUES (586, 'kunkun', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 18:57:14');
+INSERT INTO `sys_logininfor` VALUES (587, 'kunkun', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-09-18 18:58:52');
+INSERT INTO `sys_logininfor` VALUES (588, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 18:59:06');
+INSERT INTO `sys_logininfor` VALUES (589, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-09-18 19:00:01');
+INSERT INTO `sys_logininfor` VALUES (590, '202209132543', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 19:00:17');
+INSERT INTO `sys_logininfor` VALUES (591, '202209132543', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-09-18 19:04:33');
+INSERT INTO `sys_logininfor` VALUES (592, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-18 19:04:47');
+INSERT INTO `sys_logininfor` VALUES (593, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-19 09:36:00');
+INSERT INTO `sys_logininfor` VALUES (594, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-09-19 09:40:42');
+INSERT INTO `sys_logininfor` VALUES (595, 'kunkun', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-19 09:40:54');
+INSERT INTO `sys_logininfor` VALUES (596, 'kunkun', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-09-19 09:43:25');
+INSERT INTO `sys_logininfor` VALUES (597, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-19 09:43:38');
+INSERT INTO `sys_logininfor` VALUES (598, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '退出成功', '2023-09-19 09:57:30');
+INSERT INTO `sys_logininfor` VALUES (599, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-19 09:57:37');
+INSERT INTO `sys_logininfor` VALUES (600, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-19 10:24:32');
+INSERT INTO `sys_logininfor` VALUES (601, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-20 09:37:19');
+INSERT INTO `sys_logininfor` VALUES (602, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-20 11:32:46');
 
 -- ----------------------------
 -- Table structure for sys_menu
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_menu`;
 CREATE TABLE `sys_menu`  (
-  `menu_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '菜单ID',
+  `menu_id` bigint NOT NULL AUTO_INCREMENT COMMENT '菜单ID',
   `menu_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '菜单名称',
-  `parent_id` bigint(0) NULL DEFAULT 0 COMMENT '父菜单ID',
-  `order_num` int(0) NULL DEFAULT 0 COMMENT '显示顺序',
+  `parent_id` bigint NULL DEFAULT 0 COMMENT '父菜单ID',
+  `order_num` int NULL DEFAULT 0 COMMENT '显示顺序',
   `url` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '#' COMMENT '请求地址',
   `target` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '打开方式（menuItem页签 menuBlank新窗口）',
   `menu_type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '菜单类型（M目录 C菜单 F按钮）',
@@ -1425,12 +1531,12 @@ CREATE TABLE `sys_menu`  (
   `perms` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '权限标识',
   `icon` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '#' COMMENT '菜单图标',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1155 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '菜单权限表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1155 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '菜单权限表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_menu
@@ -1611,18 +1717,18 @@ INSERT INTO `sys_menu` VALUES (1154, '导出资料', 1149, 5, '#', 'menuItem', '
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_notice`;
 CREATE TABLE `sys_notice`  (
-  `notice_id` int(0) NOT NULL AUTO_INCREMENT COMMENT '公告ID',
+  `notice_id` int NOT NULL AUTO_INCREMENT COMMENT '公告ID',
   `notice_title` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '公告标题',
   `notice_type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '公告类型（1通知 2公告）',
   `notice_content` varchar(2000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '公告内容',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '公告状态（0正常 1关闭）',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`notice_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '通知公告表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '通知公告表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_notice
@@ -1635,12 +1741,12 @@ INSERT INTO `sys_notice` VALUES (2, '维护通知：2018-07-01 若依系统凌�
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_oper_log`;
 CREATE TABLE `sys_oper_log`  (
-  `oper_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '日志主键',
+  `oper_id` bigint NOT NULL AUTO_INCREMENT COMMENT '日志主键',
   `title` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '模块标题',
-  `business_type` int(0) NULL DEFAULT 0 COMMENT '业务类型（0其它 1新增 2修改 3删除）',
+  `business_type` int NULL DEFAULT 0 COMMENT '业务类型（0其它 1新增 2修改 3删除）',
   `method` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '方法名称',
   `request_method` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '请求方式',
-  `operator_type` int(0) NULL DEFAULT 0 COMMENT '操作类别（0其它 1后台用户 2手机端用户）',
+  `operator_type` int NULL DEFAULT 0 COMMENT '操作类别（0其它 1后台用户 2手机端用户）',
   `oper_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '操作人员',
   `dept_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '部门名称',
   `oper_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '请求URL',
@@ -1648,11 +1754,11 @@ CREATE TABLE `sys_oper_log`  (
   `oper_location` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '操作地点',
   `oper_param` varchar(2000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '请求参数',
   `json_result` varchar(2000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '返回参数',
-  `status` int(0) NULL DEFAULT 0 COMMENT '操作状态（0正常 1异常）',
+  `status` int NULL DEFAULT 0 COMMENT '操作状态（0正常 1异常）',
   `error_msg` varchar(2000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '错误消息',
-  `oper_time` datetime(0) NULL DEFAULT NULL COMMENT '操作时间',
+  `oper_time` datetime NULL DEFAULT NULL COMMENT '操作时间',
   PRIMARY KEY (`oper_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 868 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '操作日志记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 890 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '操作日志记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_oper_log
@@ -2425,24 +2531,46 @@ INSERT INTO `sys_oper_log` VALUES (864, '岗位管理', 2, 'com.htxk.ruoyi.web.c
 INSERT INTO `sys_oper_log` VALUES (865, '岗位管理', 3, 'com.htxk.ruoyi.web.controller.system.SysPostController.remove()', 'POST', 1, 'admin', '财务部门', '/system/post/remove', '127.0.0.1', '内网IP', '{\r\n  \"ids\" : [ \"6\" ]\r\n}', '{\r\n  \"msg\" : \"操作成功\",\r\n  \"code\" : 0\r\n}', 0, NULL, '2022-09-16 21:41:41');
 INSERT INTO `sys_oper_log` VALUES (866, '角色管理', 4, 'com.htxk.ruoyi.web.controller.system.SysRoleController.cancelAuthUser()', 'POST', 1, 'admin', '财务部门', '/system/role/authUser/cancel', '127.0.0.1', '内网IP', '{\r\n  \"roleId\" : [ \"2\" ],\r\n  \"userId\" : [ \"10012\" ]\r\n}', '{\r\n  \"msg\" : \"操作成功\",\r\n  \"code\" : 0\r\n}', 0, NULL, '2022-09-16 21:46:00');
 INSERT INTO `sys_oper_log` VALUES (867, '角色管理', 4, 'com.htxk.ruoyi.web.controller.system.SysRoleController.selectAuthUserAll()', 'POST', 1, 'admin', '财务部门', '/system/role/authUser/selectAll', '127.0.0.1', '内网IP', '{\r\n  \"roleId\" : [ \"2\" ],\r\n  \"userIds\" : [ \"10012\" ]\r\n}', '{\r\n  \"msg\" : \"操作成功\",\r\n  \"code\" : 0\r\n}', 0, NULL, '2022-09-16 21:47:04');
+INSERT INTO `sys_oper_log` VALUES (868, '学生信息', 1, 'com.htxk.edusystem.controller.EduStudentController.addSave()', 'POST', 1, 'admin', '财务部门', '/edusystem/student/add', '127.0.0.1', '内网IP', '{\r\n  \"studentName\" : [ \"陶柏蒙\" ],\r\n  \"status\" : [ \"0\" ],\r\n  \"sysUser.userName\" : [ \"mengbt\" ],\r\n  \"sysUser.email\" : [ \"2662831966@qq.com\" ],\r\n  \"sysUser.phonenumber\" : [ \"18167333870\" ],\r\n  \"sysUser.sex\" : [ \"0\" ],\r\n  \"role\" : [ \"3\" ],\r\n  \"sysUser.remark\" : [ \"弱智\" ],\r\n  \"studentClassID\" : [ \"1\" ],\r\n  \"sysUser.status\" : [ \"0\" ],\r\n  \"sysUser.roleIds\" : [ \"3\" ]\r\n}', '{\r\n  \"msg\" : \"操作成功\",\r\n  \"code\" : 0\r\n}', 0, NULL, '2023-09-18 14:36:21');
+INSERT INTO `sys_oper_log` VALUES (869, '教师信息', 1, 'com.htxk.edusystem.controller.EduTeacherController.addSave()', 'POST', 1, 'admin', '财务部门', '/edusystem/teacher/add', '127.0.0.1', '内网IP', '{\r\n  \"sysUser.deptId\" : [ \"106\" ],\r\n  \"teacherName\" : [ \"蔡徐坤\" ],\r\n  \"education\" : [ \"3\" ],\r\n  \"academicTitle\" : [ \"0\" ],\r\n  \"status\" : [ \"0\" ],\r\n  \"sysUser.userName\" : [ \"kunkun\" ],\r\n  \"sysUser.dept.deptName\" : [ \"教务部门\" ],\r\n  \"sysUser.phonenumber\" : [ \"15115115111\" ],\r\n  \"sysUser.email\" : [ \"222@qq.com\" ],\r\n  \"sysUser.loginName\" : [ \"kunkun\" ],\r\n  \"sysUser.password\" : [ \"123456\" ],\r\n  \"sysUser.sex\" : [ \"0\" ],\r\n  \"role\" : [ \"2\" ],\r\n  \"sysUser.remark\" : [ \"\" ],\r\n  \"sysUser.status\" : [ \"0\" ],\r\n  \"sysUser.roleIds\" : [ \"2\" ],\r\n  \"sysUser.postIds\" : [ \"2\" ]\r\n}', '{\r\n  \"msg\" : \"操作成功\",\r\n  \"code\" : 0\r\n}', 0, NULL, '2023-09-18 14:44:10');
+INSERT INTO `sys_oper_log` VALUES (870, '重置密码', 2, 'com.htxk.ruoyi.web.controller.system.SysUserController.resetPwd()', 'GET', 1, 'admin', '财务部门', '/system/user/resetPwd/10018', '127.0.0.1', '内网IP', '{ }', '\"system/user/resetPwd\"', 0, NULL, '2023-09-18 16:19:59');
+INSERT INTO `sys_oper_log` VALUES (871, '重置密码', 2, 'com.htxk.ruoyi.web.controller.system.SysUserController.resetPwdSave()', 'POST', 1, 'admin', '财务部门', '/system/user/resetPwd', '127.0.0.1', '内网IP', '{\r\n  \"userId\" : [ \"10018\" ],\r\n  \"loginName\" : [ \"kunkun\" ],\r\n  \"password\" : [ \"123456\" ]\r\n}', '{\r\n  \"msg\" : \"操作成功\",\r\n  \"code\" : 0\r\n}', 0, NULL, '2023-09-18 16:20:12');
+INSERT INTO `sys_oper_log` VALUES (872, '重置密码', 2, 'com.htxk.ruoyi.web.controller.system.SysUserController.resetPwd()', 'GET', 1, 'admin', '财务部门', '/system/user/resetPwd/10017', '127.0.0.1', '内网IP', '{ }', '\"system/user/resetPwd\"', 0, NULL, '2023-09-18 16:21:15');
+INSERT INTO `sys_oper_log` VALUES (873, '重置密码', 2, 'com.htxk.ruoyi.web.controller.system.SysUserController.resetPwd()', 'GET', 1, 'admin', '财务部门', '/system/user/resetPwd/10017', '127.0.0.1', '内网IP', '{ }', '\"system/user/resetPwd\"', 0, NULL, '2023-09-18 18:53:02');
+INSERT INTO `sys_oper_log` VALUES (874, '重置密码', 2, 'com.htxk.ruoyi.web.controller.system.SysUserController.resetPwd()', 'GET', 1, 'admin', '财务部门', '/system/user/resetPwd/10017', '127.0.0.1', '内网IP', '{ }', '\"system/user/resetPwd\"', 0, NULL, '2023-09-18 18:53:50');
+INSERT INTO `sys_oper_log` VALUES (875, '重置密码', 2, 'com.htxk.ruoyi.web.controller.system.SysUserController.resetPwd()', 'GET', 1, 'admin', '财务部门', '/system/user/resetPwd/10018', '127.0.0.1', '内网IP', '{ }', '\"system/user/resetPwd\"', 0, NULL, '2023-09-18 18:56:45');
+INSERT INTO `sys_oper_log` VALUES (876, '重置密码', 2, 'com.htxk.ruoyi.web.controller.system.SysUserController.resetPwd()', 'GET', 1, 'admin', '财务部门', '/system/user/resetPwd/10004', '127.0.0.1', '内网IP', '{ }', '\"system/user/resetPwd\"', 0, NULL, '2023-09-18 18:59:33');
+INSERT INTO `sys_oper_log` VALUES (877, '重置密码', 2, 'com.htxk.ruoyi.web.controller.system.SysUserController.resetPwd()', 'GET', 1, 'admin', '财务部门', '/system/user/resetPwd/10004', '127.0.0.1', '内网IP', '{ }', '\"system/user/resetPwd\"', 0, NULL, '2023-09-18 18:59:47');
+INSERT INTO `sys_oper_log` VALUES (878, '重置密码', 2, 'com.htxk.ruoyi.web.controller.system.SysUserController.resetPwdSave()', 'POST', 1, 'admin', '财务部门', '/system/user/resetPwd', '127.0.0.1', '内网IP', '{\r\n  \"userId\" : [ \"10004\" ],\r\n  \"loginName\" : [ \"202209132543\" ],\r\n  \"password\" : [ \"123456\" ]\r\n}', '{\r\n  \"msg\" : \"操作成功\",\r\n  \"code\" : 0\r\n}', 0, NULL, '2023-09-18 18:59:51');
+INSERT INTO `sys_oper_log` VALUES (879, '重置密码', 2, 'com.htxk.ruoyi.web.controller.system.SysUserController.resetPwd()', 'GET', 1, 'admin', '财务部门', '/system/user/resetPwd/10004', '127.0.0.1', '内网IP', '{ }', '\"system/user/resetPwd\"', 0, NULL, '2023-09-18 18:59:53');
+INSERT INTO `sys_oper_log` VALUES (880, '学生信息', 1, 'com.htxk.edusystem.controller.EduStudentController.addSave()', 'POST', 1, 'admin', '财务部门', '/edusystem/student/add', '127.0.0.1', '内网IP', '{\r\n  \"studentName\" : [ \"吴鸡锋\" ],\r\n  \"status\" : [ \"0\" ],\r\n  \"sysUser.userName\" : [ \"鸡哥\" ],\r\n  \"sysUser.email\" : [ \"123@qq.con\" ],\r\n  \"sysUser.phonenumber\" : [ \"15512312322\" ],\r\n  \"sysUser.sex\" : [ \"0\" ],\r\n  \"role\" : [ \"3\" ],\r\n  \"sysUser.remark\" : [ \"\" ],\r\n  \"studentClassID\" : [ \"1\" ],\r\n  \"sysUser.status\" : [ \"0\" ],\r\n  \"sysUser.roleIds\" : [ \"3\" ]\r\n}', '{\r\n  \"msg\" : \"操作成功\",\r\n  \"code\" : 0\r\n}', 0, NULL, '2023-09-18 19:08:23');
+INSERT INTO `sys_oper_log` VALUES (881, '个人信息', 2, 'com.htxk.ruoyi.web.controller.system.SysProfileController.update()', 'POST', 1, 'admin', '财务部门', '/system/user/profile/update', '127.0.0.1', '内网IP', '{\r\n  \"id\" : [ \"\" ],\r\n  \"userName\" : [ \"yy\" ],\r\n  \"phonenumber\" : [ \"16976618156\" ],\r\n  \"email\" : [ \"2496155694@qq.com\" ],\r\n  \"sex\" : [ \"0\" ]\r\n}', '{\r\n  \"msg\" : \"操作成功\",\r\n  \"code\" : 0\r\n}', 0, NULL, '2023-09-19 09:37:54');
+INSERT INTO `sys_oper_log` VALUES (882, '重置密码', 2, 'com.htxk.ruoyi.web.controller.system.SysUserController.resetPwd()', 'GET', 1, 'admin', '财务部门', '/system/user/resetPwd/10018', '127.0.0.1', '内网IP', '{ }', '\"system/user/resetPwd\"', 0, NULL, '2023-09-19 09:40:27');
+INSERT INTO `sys_oper_log` VALUES (883, '重置密码', 2, 'com.htxk.ruoyi.web.controller.system.SysUserController.resetPwd()', 'GET', 1, 'admin', '财务部门', '/system/user/resetPwd/10018', '127.0.0.1', '内网IP', '{ }', '\"system/user/resetPwd\"', 0, NULL, '2023-09-19 09:40:35');
+INSERT INTO `sys_oper_log` VALUES (884, '重置密码', 2, 'com.htxk.ruoyi.web.controller.system.SysUserController.resetPwdSave()', 'POST', 1, 'admin', '财务部门', '/system/user/resetPwd', '127.0.0.1', '内网IP', '{\r\n  \"userId\" : [ \"10018\" ],\r\n  \"loginName\" : [ \"kunkun\" ],\r\n  \"password\" : [ \"123456\" ]\r\n}', '{\r\n  \"msg\" : \"操作成功\",\r\n  \"code\" : 0\r\n}', 0, NULL, '2023-09-19 09:40:36');
+INSERT INTO `sys_oper_log` VALUES (885, '学生信息', 3, 'com.htxk.edusystem.controller.EduStudentController.remove()', 'POST', 1, 'admin', '财务部门', '/edusystem/student/remove', '127.0.0.1', '内网IP', '{\r\n  \"ids\" : [ \"15\" ]\r\n}', '{\r\n  \"msg\" : \"操作成功\",\r\n  \"code\" : 0\r\n}', 0, NULL, '2023-09-19 10:24:39');
+INSERT INTO `sys_oper_log` VALUES (886, '学生信息', 3, 'com.htxk.edusystem.controller.EduStudentController.remove()', 'POST', 1, 'admin', '财务部门', '/edusystem/student/remove', '127.0.0.1', '内网IP', '{\r\n  \"ids\" : [ \"18\" ]\r\n}', '{\r\n  \"msg\" : \"操作成功\",\r\n  \"code\" : 0\r\n}', 0, NULL, '2023-09-19 10:31:25');
+INSERT INTO `sys_oper_log` VALUES (887, '学生信息', 1, 'com.htxk.edusystem.controller.EduStudentController.addSave()', 'POST', 1, 'admin', '财务部门', '/edusystem/student/add', '127.0.0.1', '内网IP', '{\r\n  \"studentName\" : [ \"陈鸿蓓\" ],\r\n  \"status\" : [ \"0\" ],\r\n  \"sysUser.userName\" : [ \"chb\" ],\r\n  \"sysUser.email\" : [ \"132@qq.com\" ],\r\n  \"sysUser.phonenumber\" : [ \"13355566656\" ],\r\n  \"sysUser.sex\" : [ \"0\" ],\r\n  \"role\" : [ \"3\" ],\r\n  \"sysUser.remark\" : [ \"\" ],\r\n  \"studentClassID\" : [ \"1\" ],\r\n  \"sysUser.status\" : [ \"0\" ],\r\n  \"sysUser.roleIds\" : [ \"3\" ]\r\n}', '{\r\n  \"msg\" : \"操作成功\",\r\n  \"code\" : 0\r\n}', 0, NULL, '2023-09-19 10:40:07');
+INSERT INTO `sys_oper_log` VALUES (888, '教师信息', 3, 'com.htxk.edusystem.controller.EduTeacherController.remove()', 'POST', 1, 'admin', '财务部门', '/edusystem/teacher/remove', '127.0.0.1', '内网IP', '{\r\n  \"ids\" : [ \"14\" ]\r\n}', '{\r\n  \"msg\" : \"操作成功\",\r\n  \"code\" : 0\r\n}', 0, NULL, '2023-09-19 10:54:23');
+INSERT INTO `sys_oper_log` VALUES (889, '教师信息', 1, 'com.htxk.edusystem.controller.EduTeacherController.addSave()', 'POST', 1, 'admin', '财务部门', '/edusystem/teacher/add', '127.0.0.1', '内网IP', '{\r\n  \"sysUser.deptId\" : [ \"106\" ],\r\n  \"teacherName\" : [ \"朱永丽\" ],\r\n  \"education\" : [ \"2\" ],\r\n  \"academicTitle\" : [ \"2\" ],\r\n  \"status\" : [ \"0\" ],\r\n  \"sysUser.userName\" : [ \"zyl\" ],\r\n  \"sysUser.dept.deptName\" : [ \"教务部门\" ],\r\n  \"sysUser.phonenumber\" : [ \"13299999999\" ],\r\n  \"sysUser.email\" : [ \"zyl@163.com\" ],\r\n  \"sysUser.loginName\" : [ \"zyl@163.com\" ],\r\n  \"sysUser.password\" : [ \"123456\" ],\r\n  \"sysUser.sex\" : [ \"1\" ],\r\n  \"role\" : [ \"2\" ],\r\n  \"sysUser.remark\" : [ \"\" ],\r\n  \"sysUser.status\" : [ \"0\" ],\r\n  \"sysUser.roleIds\" : [ \"2\" ],\r\n  \"sysUser.postIds\" : [ \"1\" ]\r\n}', '{\r\n  \"msg\" : \"操作成功\",\r\n  \"code\" : 0\r\n}', 0, NULL, '2023-09-19 10:55:35');
 
 -- ----------------------------
 -- Table structure for sys_post
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_post`;
 CREATE TABLE `sys_post`  (
-  `post_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '岗位ID',
+  `post_id` bigint NOT NULL AUTO_INCREMENT COMMENT '岗位ID',
   `post_code` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '岗位编码',
   `post_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '岗位名称',
-  `post_sort` int(0) NOT NULL COMMENT '显示顺序',
+  `post_sort` int NOT NULL COMMENT '显示顺序',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '状态（0正常 1停用）',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`post_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '岗位信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '岗位信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_post
@@ -2458,20 +2586,20 @@ INSERT INTO `sys_post` VALUES (5, 'fdy', '辅导员', 5, '0', 'admin', '2020-01-
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role`;
 CREATE TABLE `sys_role`  (
-  `role_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '角色ID',
+  `role_id` bigint NOT NULL AUTO_INCREMENT COMMENT '角色ID',
   `role_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '角色名称',
   `role_key` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '角色权限字符串',
-  `role_sort` int(0) NOT NULL COMMENT '显示顺序',
+  `role_sort` int NOT NULL COMMENT '显示顺序',
   `data_scope` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '1' COMMENT '数据范围（1：全部数据权限 2：自定数据权限 3：本部门数据权限 4：本部门及以下数据权限）',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '角色状态（0正常 1停用）',
   `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`role_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_role
@@ -2485,10 +2613,10 @@ INSERT INTO `sys_role` VALUES (3, '学生', 'student', 3, '5', '0', '0', 'admin'
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role_dept`;
 CREATE TABLE `sys_role_dept`  (
-  `role_id` bigint(0) NOT NULL COMMENT '角色ID',
-  `dept_id` bigint(0) NOT NULL COMMENT '部门ID',
+  `role_id` bigint NOT NULL COMMENT '角色ID',
+  `dept_id` bigint NOT NULL COMMENT '部门ID',
   PRIMARY KEY (`role_id`, `dept_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色和部门关联表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色和部门关联表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_role_dept
@@ -2502,10 +2630,10 @@ INSERT INTO `sys_role_dept` VALUES (2, 105);
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role_menu`;
 CREATE TABLE `sys_role_menu`  (
-  `role_id` bigint(0) NOT NULL COMMENT '角色ID',
-  `menu_id` bigint(0) NOT NULL COMMENT '菜单ID',
+  `role_id` bigint NOT NULL COMMENT '角色ID',
+  `menu_id` bigint NOT NULL COMMENT '菜单ID',
   PRIMARY KEY (`role_id`, `menu_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色和菜单关联表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色和菜单关联表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_role_menu
@@ -2618,8 +2746,8 @@ INSERT INTO `sys_role_menu` VALUES (3, 1154);
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user`;
 CREATE TABLE `sys_user`  (
-  `user_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
-  `dept_id` bigint(0) NULL DEFAULT NULL COMMENT '部门ID',
+  `user_id` bigint NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+  `dept_id` bigint NULL DEFAULT NULL COMMENT '部门ID',
   `login_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '登录账号',
   `user_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户昵称',
   `user_type` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '00' COMMENT '用户类型（00系统用户,01教师用户,02,学生用户）',
@@ -2632,33 +2760,38 @@ CREATE TABLE `sys_user`  (
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '帐号状态（0正常 1停用）',
   `del_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
   `login_ip` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '最后登陆IP',
-  `login_date` datetime(0) NULL DEFAULT NULL COMMENT '最后登陆时间',
+  `login_date` datetime NULL DEFAULT NULL COMMENT '最后登陆时间',
   `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10014 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10022 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 103, 'admin', 'yy', '00', '2496155694@qq.com', '16976618156', '0', '/profile/avatar/2020/02/09/4dff6b6616fefbaf849bb09255fbb3c1.png', '29c67a30398638269fe600f73a054934', '111111', '0', '0', '127.0.0.1', '2022-09-17 11:23:46', 'admin', '2020-01-01 22:11:10', 'ry', '2022-09-17 11:23:45', '管理员');
+INSERT INTO `sys_user` VALUES (1, 103, 'admin', 'yy', '00', '2496155694@qq.com', '16976618156', '0', '/profile/avatar/2020/02/09/4dff6b6616fefbaf849bb09255fbb3c1.png', '29c67a30398638269fe600f73a054934', '111111', '0', '0', '127.0.0.1', '2023-09-20 11:32:46', 'admin', '2020-01-01 22:11:10', 'ry', '2023-09-20 11:32:46', '管理员');
 INSERT INTO `sys_user` VALUES (2, 105, 'ry', '鸿枫', '00', 'ry@qq.com', '15666666666', '1', '/profile/avatar/2020/01/07/f31711d33473683fcf0c0b1d285d35e8.png', '8e6d98b90472783cc73c17047ddccf36', '222222', '0', '2', '127.0.0.1', '2020-01-07 20:49:58', 'admin', '2018-03-16 11:33:00', 'admin', '2020-01-07 20:50:28', '测试员');
 INSERT INTO `sys_user` VALUES (10003, 103, 'ry2', 'yy', '00', '897635@qq.com', '19986546578', '1', '', '9f29a57c3f21a6aa56def17c0379feac', 'e118fd', '0', '2', '', NULL, 'admin', '2022-09-13 15:45:53', '', NULL, 'yy');
-INSERT INTO `sys_user` VALUES (10004, NULL, '202209132543', 'yuan', '02', '897645435@qq.com', '17816309913', '0', '', '2bb26463e2046db9e02d303d1e7573ff', '6d2a17', '0', '0', '127.0.0.1', '2022-09-16 19:33:31', 'admin', '2022-09-13 16:25:53', '', '2022-09-16 19:33:31', 'test');
-INSERT INTO `sys_user` VALUES (10005, 106, 'juan', '娟', '03', 'juan@qq.com', '15878987425', '0', '', '87dd9c029ef2c87e39b61a9d6e7a2446', '08c11d', '0', '0', '127.0.0.1', '2022-09-16 19:29:10', 'admin', '2022-09-13 16:31:32', '', '2022-09-16 19:29:10', 'juan');
+INSERT INTO `sys_user` VALUES (10004, NULL, '202209132543', 'yuan', '02', '897645435@qq.com', '17816309913', '0', '', '4c55c18e0227eb5356a44620f49856ae', '22c1b1', '0', '2', '127.0.0.1', '2023-09-18 19:00:17', 'admin', '2022-09-13 16:25:53', '', '2023-09-18 19:00:17', 'test');
+INSERT INTO `sys_user` VALUES (10005, 106, 'juan', '娟', '03', 'juan@qq.com', '15878987425', '0', '', '87dd9c029ef2c87e39b61a9d6e7a2446', '08c11d', '0', '2', '127.0.0.1', '2022-09-16 19:29:10', 'admin', '2022-09-13 16:31:32', '', '2022-09-16 19:29:10', 'juan');
 INSERT INTO `sys_user` VALUES (10006, NULL, '202209134646', 'xx', '02', 'uuuu@qq.com', '15874897856', '0', '', '9ee32063811f9119235a085ee165aadb', '93ef6c', '0', '2', '', NULL, 'admin', '2022-09-13 16:48:32', '', NULL, 'ttt');
 INSERT INTO `sys_user` VALUES (10007, NULL, '202209150521', 'zhangsan', '02', '428266607@qq.com', '13103663756', '0', '', 'f70c66d8e71af92874be47562dba2030', '09db77', '0', '2', '', NULL, 'admin', '2022-09-15 19:05:21', 'admin', '2022-09-15 19:06:57', '');
 INSERT INTO `sys_user` VALUES (10008, 106, 'lisi', '小李四', '03', '123456@qq.com', '15656565656', '0', '', '7f729a1acfdfa394d84f6d55079e21c5', '8302c5', '0', '0', '', NULL, 'admin', '2022-09-16 14:09:02', 'admin', '2022-09-16 20:28:45', '');
-INSERT INTO `sys_user` VALUES (10009, NULL, '202209162150', '雨桐', '02', 'www@qq.com', '15688988998', '1', '', 'f8a436fefb4a970dee26da9571f7561c', '5cebb4', '0', '0', '', NULL, 'admin', '2022-09-16 20:21:50', 'admin', '2022-09-16 21:20:48', '');
+INSERT INTO `sys_user` VALUES (10009, NULL, '202209162150', '雨桐', '02', 'www@qq.com', '15688988998', '1', '', 'f8a436fefb4a970dee26da9571f7561c', '5cebb4', '0', '2', '', NULL, 'admin', '2022-09-16 20:21:50', 'admin', '2022-09-16 21:20:48', '');
 INSERT INTO `sys_user` VALUES (10010, NULL, '202209162235', '法外狂徒', '02', 'zhang@sc.com', '15879635415', '0', '', 'eab9f9c219f6e3687261899beb118339', '9d2431', '1', '0', '', NULL, 'admin', '2022-09-16 20:22:35', 'admin', '2022-09-16 20:22:43', '');
 INSERT INTO `sys_user` VALUES (10011, NULL, '202209162354', '(*^_^*)', '02', 'xiao@162.com', '15879547862', '1', '', '06f627a5556dbf8766b76efad997a409', '125805', '0', '0', '', NULL, 'admin', '2022-09-16 20:23:54', '', NULL, '笑口常开，好彩自然来');
 INSERT INTO `sys_user` VALUES (10012, 105, 'feifei', '飞飞', '03', 'feifei@666.com', '15462565656', '0', '', '1bc901e574074609d253b2bc2c46da83', '45aec2', '0', '0', '', NULL, 'admin', '2022-09-16 20:26:25', 'admin', '2022-09-16 20:28:31', '');
 INSERT INTO `sys_user` VALUES (10013, 110, 'caocao', '挟天子以令诸侯', '03', 'cao@777.com', '15489898745', '0', '', '540a5cbcc8a3e23893a5fec86593b7a4', 'cbb3ca', '0', '0', '', NULL, 'admin', '2022-09-16 20:28:14', '', NULL, NULL);
 INSERT INTO `sys_user` VALUES (10014, NULL, '202209161516', 'tutu', '02', '942915910@qq.com', '19906644656', '1', '', '43e97f94f380301fe1575c3b04fa02bd', '1cd4a1', '0', '2', '', NULL, 'admin', '2022-09-16 21:15:16', '', NULL, '最可爱');
 INSERT INTO `sys_user` VALUES (10015, 104, 'tt', 'admin', '03', '9475856557@qq.com', '15576970909', '0', '', 'c8e37bc7407a2dc8f18efdfce2d287cc', '0b042a', '0', '2', '', NULL, 'admin', '2022-09-16 21:25:27', 'admin', '2022-09-16 21:28:00', '');
+INSERT INTO `sys_user` VALUES (10017, NULL, '202309183621', 'mengbt', '02', '2662831966@qq.com', '18167333870', '0', '', 'd0ff002ef9b02c69e0fa90ed6acb3f95', '2dea22', '0', '0', '', NULL, 'admin', '2023-09-18 14:36:21', '', NULL, '弱智');
+INSERT INTO `sys_user` VALUES (10018, 106, 'kunkun', 'kunkun', '03', '222@qq.com', '15115115111', '0', '', 'b51e24bea93e112f2f04df361fa8b2d0', '0b208d', '0', '0', '127.0.0.1', '2023-09-19 09:40:55', 'admin', '2023-09-18 14:44:10', '', '2023-09-19 09:40:54', NULL);
+INSERT INTO `sys_user` VALUES (10019, NULL, '202309180822', '鸡哥', '02', '123@qq.con', '15512312322', '0', '', '4b867e02c71e3046fc23aa9f239086e2', 'fe20dc', '0', '0', '', NULL, 'admin', '2023-09-18 19:08:22', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (10020, NULL, '202309194007', 'chb', '02', '132@qq.com', '13355566656', '0', '', 'd4de1e69477c7485047363971c120e70', '807e54', '0', '0', '', NULL, 'admin', '2023-09-19 10:40:07', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (10021, 106, 'zyl@163.com', 'zyl', '03', 'zyl@163.com', '13299999999', '1', '', 'dc24e0ec2fce5e97c2d662333584d9eb', 'e8e683', '0', '0', '', NULL, 'admin', '2023-09-19 10:55:35', '', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for sys_user_online
@@ -2673,26 +2806,26 @@ CREATE TABLE `sys_user_online`  (
   `browser` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '浏览器类型',
   `os` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '操作系统',
   `status` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '在线状态on_line在线off_line离线',
-  `start_timestamp` datetime(0) NULL DEFAULT NULL COMMENT 'session创建时间',
-  `last_access_time` datetime(0) NULL DEFAULT NULL COMMENT 'session最后访问时间',
-  `expire_time` int(0) NULL DEFAULT 0 COMMENT '超时时间，单位为分钟',
+  `start_timestamp` datetime NULL DEFAULT NULL COMMENT 'session创建时间',
+  `last_access_time` datetime NULL DEFAULT NULL COMMENT 'session最后访问时间',
+  `expire_time` int NULL DEFAULT 0 COMMENT '超时时间，单位为分钟',
   PRIMARY KEY (`sessionId`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '在线用户记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '在线用户记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_user_online
 -- ----------------------------
-INSERT INTO `sys_user_online` VALUES ('a50941a6-21df-43e8-b63e-b5ea42fbfaf2', 'admin', '财务部门', '127.0.0.1', '内网IP', 'Chrome 10', 'Windows 10', 'on_line', '2022-09-17 11:23:30', '2022-09-17 11:23:46', 1800000);
+INSERT INTO `sys_user_online` VALUES ('1bf4fd5d-e9cf-4afe-b760-f1c08a41e7fa', 'admin', '财务部门', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', 'on_line', '2023-09-20 11:32:36', '2023-09-20 11:32:46', 1800000);
 
 -- ----------------------------
 -- Table structure for sys_user_post
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user_post`;
 CREATE TABLE `sys_user_post`  (
-  `user_id` bigint(0) NOT NULL COMMENT '用户ID',
-  `post_id` bigint(0) NOT NULL COMMENT '岗位ID',
+  `user_id` bigint NOT NULL COMMENT '用户ID',
+  `post_id` bigint NOT NULL COMMENT '岗位ID',
   PRIMARY KEY (`user_id`, `post_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户与岗位关联表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户与岗位关联表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_user_post
@@ -2704,18 +2837,19 @@ INSERT INTO `sys_user_post` VALUES (5, 3);
 INSERT INTO `sys_user_post` VALUES (5, 5);
 INSERT INTO `sys_user_post` VALUES (10, 2);
 INSERT INTO `sys_user_post` VALUES (11, 5);
-INSERT INTO `sys_user_post` VALUES (10005, 1);
 INSERT INTO `sys_user_post` VALUES (10013, 4);
+INSERT INTO `sys_user_post` VALUES (10018, 2);
+INSERT INTO `sys_user_post` VALUES (10021, 1);
 
 -- ----------------------------
 -- Table structure for sys_user_role
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user_role`;
 CREATE TABLE `sys_user_role`  (
-  `user_id` bigint(0) NOT NULL COMMENT '用户ID',
-  `role_id` bigint(0) NOT NULL COMMENT '角色ID',
+  `user_id` bigint NOT NULL COMMENT '用户ID',
+  `role_id` bigint NOT NULL COMMENT '角色ID',
   PRIMARY KEY (`user_id`, `role_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户和角色关联表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户和角色关联表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_user_role
@@ -2727,13 +2861,15 @@ INSERT INTO `sys_user_role` VALUES (5, 2);
 INSERT INTO `sys_user_role` VALUES (10, 2);
 INSERT INTO `sys_user_role` VALUES (11, 2);
 INSERT INTO `sys_user_role` VALUES (55, 3);
-INSERT INTO `sys_user_role` VALUES (10004, 3);
-INSERT INTO `sys_user_role` VALUES (10005, 2);
 INSERT INTO `sys_user_role` VALUES (10008, 2);
-INSERT INTO `sys_user_role` VALUES (10009, 3);
 INSERT INTO `sys_user_role` VALUES (10010, 3);
 INSERT INTO `sys_user_role` VALUES (10011, 3);
 INSERT INTO `sys_user_role` VALUES (10012, 2);
 INSERT INTO `sys_user_role` VALUES (10013, 2);
+INSERT INTO `sys_user_role` VALUES (10017, 3);
+INSERT INTO `sys_user_role` VALUES (10018, 2);
+INSERT INTO `sys_user_role` VALUES (10019, 3);
+INSERT INTO `sys_user_role` VALUES (10020, 3);
+INSERT INTO `sys_user_role` VALUES (10021, 2);
 
 SET FOREIGN_KEY_CHECKS = 1;
